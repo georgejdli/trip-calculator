@@ -1,0 +1,22 @@
+<section>
+    <header class="header">
+        <h1>Results</h1>
+      </header>
+</section>
+<section class="main" *ngIf="students.length > 0">
+  <div>
+    <div class="card" *ngFor="let student of students">
+      <div class="card-body">
+        <h5 class="card-title">{{ student.name }}</h5>
+
+        <ul class="list-group list-group-flush" *ngIf="student.amountsOwed.length > 0">
+          <li class="list-group-item" *ngFor="let item of student.amountsOwed">Owes {{ item.name }} {{ item.amount }}</li>
+        </ul>
+        <p *ngIf="student.amountsOwed.length == 0"> Owes nothing!</p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <button class="btn btn-success" type="button" id="button-back" (click)="gotoStudents()">Back to Students</button>
+  </div>
+</section>

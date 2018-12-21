@@ -1,0 +1,38 @@
+<section>
+  <header class="header">
+    <h1>Students</h1>
+    <div class="input-group mb-3">
+      <input class="new-student" placeholder="Enter a name" autofocus="" [(ngModel)]="newStudent.name">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-add-student" (click)="addStudent()">Add Student</button>
+      </div>
+    </div>
+  </header>
+  <section class="main" *ngIf="students.length > 0">
+    <div>
+      <div class="card" *ngFor="let student of students">
+        <div class="card-body">
+          <h5 class="card-title">{{ student.name }} <button class="btn btn-danger" (click)="removeStudent(student)">X</button></h5>
+
+          <div class="input-group mb-3">
+            <input #desc type="text" class="form-control" placeholder="Description" value="Description">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <input #amount type="text" class="form-control" mask="0*.00">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" id="button-add-expense" (click)="addExpense(student, desc.value, amount.value); desc.value='Description'; amount.value=''" [attr.disabled]= "amount.value == '' ? 'disabled' : null">Add Expense</button>
+            </div>
+          </div>
+
+          <ul class="list-group list-group-flush" *ngIf="student.expenses.length > 0">
+            <li class="list-group-item" *ngFor="let expense of student.expenses">{{ expense.description }} - {{ expense.amount }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-success" type="button" id="button-calculate" (click)="gotoCalculations()" [attr.disabled]= "students.length != 3 ? 'disabled' : null">Calculate!</button>
+    </div>
+  </section>
+</section>

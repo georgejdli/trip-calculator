@@ -1,5 +1,13 @@
 # TripCalculator
 
+## Future Enhancements
+- [ ] Allow user to update/delete expenses for a given student
+- [ ] Generalize the calculation logic to handle more than three students and scenarios where a given student owes money to more than one student
+
+## Libraries Used
+- NgxMaskModule used to mask currency input. Insures user data is in valid format before storing.
+- big-numbers used for floating point calculations and rounding to the nearest cent.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.8.
 
 ## Development server
